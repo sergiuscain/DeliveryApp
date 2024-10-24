@@ -10,5 +10,6 @@ namespace DeliveryApp.DB.Models
     {
         public Guid ID { get; set; }
         public string Name { get; set; }
+        public List<Order> Order { get; set; }
     }
 }

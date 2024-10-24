@@ -15,6 +15,6 @@ namespace DeliveryApp.Models
         [Required(ErrorMessage ="Это обязательное поле!")]
         public DateTime OrderDeliveryDate  { get; set; } //Дата и время доставки
         public DateTime OrderCreationDate { get; set; } //Время создания заказа
-
+        public int CoiuntDistrictOrders { get; set; }
     }
 }

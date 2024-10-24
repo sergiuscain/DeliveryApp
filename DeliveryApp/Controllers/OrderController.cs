@@ -52,8 +52,8 @@ namespace DeliveryApp.Controllers
                 Order orderDB = new Order
                 {
                     Id = Guid.NewGuid(),
-                    OrderCreationDate = order.OrderCreationDate,
-                    OrderDeliveryTime = order.OrderDeliveryDate,
+                    OrderCreationDate = DateTime.Now,
+                    OrderDeliveryDate = order.OrderDeliveryDate,
                     Weight = order.Weight,
                     CityDistrict = district
                 };

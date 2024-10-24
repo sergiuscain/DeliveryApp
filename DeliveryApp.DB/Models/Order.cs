@@ -11,7 +11,7 @@ namespace DeliveryApp.DB.Models
         public Guid Id { get; set; }
         public int Weight { get; set; } //В килограммах
         public District CityDistrict { get; set; } //Район города
-        public DateTime OrderDeliveryTime { get; set; } //Дата и время доставки
+        public DateTime OrderDeliveryDate { get; set; } //Дата и время доставки
         public DateTime OrderCreationDate { get; set; } //Время создания заказа
     }
 }

@@ -24,7 +24,8 @@ namespace DeliveryApp.Controllers
         public IActionResult Index(FiltersAndOrdersModel model)
         {
             var orders = _ordersStorage.GetOrders();
-            orders = orders.Where(o => o.OrderDeliveryTime >= model.FirstDateTime && o.OrderDeliveryTime <= model.LastDateTime).ToList();
+            orders = orders.Where(o => o.OrderDeliveryDate >= model.FirstDateTime && o.OrderDeliveryDate <= model.LastDateTime).ToList();
+            orders = orders.OrderBy(o => o.CityDistrict.Order.Count).ThenBy(o => o.OrderCreationDate).Reverse();
             model._orders = orders.Select(o => o.ToVM()).ToList();
             return View(model);
         }
