@@ -17,7 +17,7 @@ namespace DeliveryApp.Controllers
         public IActionResult Index()
         {
             var orders = orderStorage.GetOrders(); 
-            var ordersViewModel = orders.Select(o => o.ToVM()).ToList();
+            var ordersViewModel = orders.Select(o => o.ToVM()).OrderBy(o => o.OrderDeliveryDate).ToList();
             return View(ordersViewModel);
         }
         public IActionResult Order(int orderId)
@@ -32,7 +32,7 @@ namespace DeliveryApp.Controllers
         [HttpPost]
         public IActionResult Create(OrderViewModel order)
         {
-            if (order.OrderDeliveryTime < DateTime.Now)
+            if (order.OrderDeliveryDate < DateTime.Now)
             {
                 ModelState.AddModelError("OrderDeliveryTime", "Дата доставки не может быть в прошлом");
                 return View(order);
@@ -53,7 +53,7 @@ namespace DeliveryApp.Controllers
                 {
                     Id = Guid.NewGuid(),
                     OrderCreationDate = order.OrderCreationDate,
-                    OrderDeliveryTime = order.OrderDeliveryTime,
+                    OrderDeliveryTime = order.OrderDeliveryDate,
                     Weight = order.Weight,
                     CityDistrict = district
                 };

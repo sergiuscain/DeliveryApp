@@ -1,1 +1,40 @@
-﻿
+﻿@model FiltersAndOrdersModel
+<form method="post">
+    <div class="col-3">
+        <div>
+            <label asp-for="FirstDateTime">С:</label><br />
+            <input asp-for="FirstDateTime"><br
+            <span asp-validation-for="FirstDateTime"></span>
+        </div>
+        <div>
+            <label asp-for="LastDateTime">По:</label><br />
+            <input asp-for="LastDateTime"><br />
+            <span asp-validation-for="LastDateTime"></span>
+        </div>
+        <button asp-controller="Home" asp-action="Index" type="submit">Поиск</button>
+    </div>
+</form>
+@if (Model != null)
+{
+    <div class="row">
+     <table class="table table-success table-striped-columns table-bordered border-dark" border="1">
+        <tr>
+             <th>ID заказа</th>
+             <th>Вес</th>
+             <th>Район</th>
+             <th>Дата и время доставки</th>
+             <th>Дата и время создания заказа</th>
+         </tr>
+         @foreach (var order in Model._orders)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.Weight</td>
+                <td>@order.CityDistrict</td>
+                <td>@order.OrderDeliveryDate</td>
+                <td>@order.OrderCreationDate</td>
+            </tr>
+        }
+    </table>
+    </div>
+}

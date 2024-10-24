@@ -12,7 +12,7 @@ namespace DeliveryApp
             {
                 Id = Guid.NewGuid(),
                 OrderCreationDate = DateTime.Now,
-                OrderDeliveryTime = viewModel.OrderDeliveryTime,
+                OrderDeliveryTime = viewModel.OrderDeliveryDate,
                 Weight = viewModel.Weight
             };
         }
@@ -23,7 +23,7 @@ namespace DeliveryApp
                 CityDistrict = order.CityDistrict.Name,
                 Id = order.Id,
                 OrderCreationDate = order.OrderCreationDate,
-                OrderDeliveryTime = order.OrderDeliveryTime,
+                OrderDeliveryDate = order.OrderDeliveryTime,
                 Weight = order.Weight
             };
         }
