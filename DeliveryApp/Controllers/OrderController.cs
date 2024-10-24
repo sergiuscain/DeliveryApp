@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DeliveryApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryApp.Controllers
 {
@@ -8,10 +9,19 @@ namespace DeliveryApp.Controllers
         {
             return View();
         }
+        public IActionResult Order(int orderId)
+        {
+            return View();
+        }
         public IActionResult Create()
         {
             return View();
         }
-        public IActionResult Create(Order)
+
+        [HttpPost]
+        public IActionResult Create(OrderModel order)
+        {
+            return View(order);
+        }
     }
 }

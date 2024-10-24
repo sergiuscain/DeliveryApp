@@ -1,1 +1,24 @@
-﻿@Model OrderModel
+﻿@model OrderModel
+<div class="row">
+    <form method="post">
+        <div class="col-6 text-center">
+            <div>
+                <label asp-for="Weight" >Вес заказа:</label><br />
+                <input asp-for="Weight" /><br />
+                <div><span asp-validation-for="Weight" ></span></div>
+            </div>
+
+            <div>
+                <label asp-for="CityDistrict">Район заказа:</label><br />
+                <input asp-for="CityDistrict" /><br />
+                <div><span asp-validation-for="CityDistrict"></span></div>
+            </div>
+            <div>
+                <label asp-for="OrderDeliveryTime">Дата и время доставки:</label><br />
+                <input asp-for="OrderDeliveryTime" /><br />
+                <div><span asp-validation-for="OrderDeliveryTime"></span></div>
+            </div>
+            <button class="btn border-success" asp-area="" asp-controller="Order" asp-action="Create">Добавить заказ</button>
+        </div>
+    </form>
+</div>
