@@ -1,3 +1,6 @@
+using DeliveryApp.DB;
+using Microsoft.EntityFrameworkCore;
+
 namespace DeliveryApp
 {
     public class Program
@@ -8,6 +11,10 @@ namespace DeliveryApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<DeliveryAppDBContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddTransient<IOrdersStorage, OrdersDBStorage>();
+            builder.Services.AddTransient<IDistrictStorage, DistrictsDBStorage>();
 
             var app = builder.Build();
 
