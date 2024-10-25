@@ -11,10 +11,14 @@
             <input asp-for="LastDateTime"><br />
             <span asp-validation-for="LastDateTime"></span>
         </div>
+        <div>
+            <label asp-for="DistrictName">Район:</label><br />
+            <input asp-for="DistrictName" />
+        </div>
         <button asp-controller="Home" asp-action="Index" type="submit">Поиск</button>
     </div>
 </form>
-@if (Model != null)
+@if (Model._orders != null)
 {
     <div class="row">
      <table class="table table-success table-striped-columns table-bordered border-dark" border="1">

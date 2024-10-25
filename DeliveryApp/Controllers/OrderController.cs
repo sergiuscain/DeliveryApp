@@ -76,10 +76,9 @@ namespace DeliveryApp.Controllers
                 return RedirectToAction("NoOrdersInDistrict", new DistrictViewModel { Name = district});
             }
             var startDate = orders.Min(orders => orders.OrderDeliveryDate);
-            bool test = startDate == orders[1].OrderDeliveryDate;
             var endDate = startDate.AddMinutes(30);
-            bool test2 = startDate == orders[1].OrderDeliveryDate;
             orders = orders.Where(o => (o.OrderDeliveryDate == startDate) || (o.OrderDeliveryDate < endDate && o.OrderDeliveryDate > startDate)).ToList();
+            orderStorage.AddDeliverySet(orders.ToDeliveryOrder());
             var ordersVM = orders.Select(o => o.ToVM()).ToList();
             return View(ordersVM);
         }

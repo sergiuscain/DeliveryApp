@@ -43,5 +43,20 @@ namespace DeliveryApp
                 Name = district.Name,
             };
         }
+        public static List<DeliveringOrder> ToDeliveryOrder(this List<Order> orders)
+        {
+            var ordersInDelivery = new List<DeliveringOrder>();
+            foreach (var order in orders)
+            {
+                ordersInDelivery.Add(new DeliveringOrder {
+                    Id = order.Id,
+                    CityDistrict = order.CityDistrict.Name,
+                    Weight = order.Weight,
+                    OrderCreationDate= order.OrderCreationDate,
+                    OrderDeliveryDate= order.OrderDeliveryDate,
+                });
+            }
+            return ordersInDelivery;
+        }
     }
 }

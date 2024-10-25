@@ -33,5 +33,11 @@ namespace DeliveryApp.DB
               .Include (o => o.CityDistrict)
               .Where(o => o.CityDistrict.Name == district)
               .ToList();
+
+        public void AddDeliverySet(List<DeliveringOrder> inDelivery)
+        {
+            _context.InDelivery.AddRange(inDelivery);
+            _context.SaveChangesAsync();
+        }
     }
 }

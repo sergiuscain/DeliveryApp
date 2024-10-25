@@ -8,6 +8,7 @@ namespace DeliveryApp.DB
     {
         public DbSet<Order> Orders { get; set; }
         public DbSet<District> Districts { get; set; }
+        public DbSet<DeliveringOrder> InDelivery { get; set; }
         public DeliveryAppDBContext(DbContextOptions<DeliveryAppDBContext> options) : base(options)
         {
             Database.EnsureCreated();
