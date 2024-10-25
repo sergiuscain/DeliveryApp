@@ -1,0 +1,16 @@
+﻿@model List<DistrictViewModel>
+
+<div class="col-4">
+    <h6>Выберите район доставки на ближайшие пол часа:</h6>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <h6>Районы:</h6>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            @foreach (var district in Model)
+            {
+                <li><a class="dropdown-item" asp-controller="Order" asp-action="StartDelivery" asp-route-district="@district.Name">@district.Name</a></li>
+            }
+        </ul>
+    </div>
+</div>

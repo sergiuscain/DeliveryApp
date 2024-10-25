@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryApp.DB.Models
 {
-    public class Order
+    public class Order 
     {
         public Guid Id { get; set; }
         public int Weight { get; set; } //В килограммах

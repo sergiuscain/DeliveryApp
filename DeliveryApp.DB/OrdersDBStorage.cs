@@ -25,6 +25,13 @@ namespace DeliveryApp.DB
             _context.Orders.Remove(order);
             _context.SaveChangesAsync();
         }
-        public IEnumerable<Order> GetOrders() => _context.Orders.Include(o => o.CityDistrict) .ToList();
+        public IEnumerable<Order> GetOrders() => _context.Orders
+              .Include(o => o.CityDistrict)
+              .ToList();
+
+        public IEnumerable<Order> GetByDistrict(string district) => _context.Orders
+              .Include (o => o.CityDistrict)
+              .Where(o => o.CityDistrict.Name == district)
+              .ToList();
     }
 }

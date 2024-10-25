@@ -62,5 +62,26 @@ namespace DeliveryApp.Controllers
             }
             return View(order);
         }
+        public IActionResult SelectDeliveyDistrictAndStart()
+        {
+            List<District> districtList = districtStorage.GetAllDistricts();
+            var districtVM = districtList.Select(d => d.ToVM()).ToList();
+            return View(districtVM);
+        }
+        public IActionResult StartDelivery(string district)
+        {
+            var orders = orderStorage.GetByDistrict(district).ToList();
+            if (orders.Count() == 0)
+            {
+                return RedirectToAction("NoOrdersInDistrict", new DistrictViewModel { Name = district});
+            }
+            var startDate = orders.Min(orders => orders.OrderDeliveryDate);
+            bool test = startDate == orders[1].OrderDeliveryDate;
+            var endDate = startDate.AddMinutes(30);
+            bool test2 = startDate == orders[1].OrderDeliveryDate;
+            orders = orders.Where(o => (o.OrderDeliveryDate == startDate) || (o.OrderDeliveryDate < endDate && o.OrderDeliveryDate > startDate)).ToList();
+            var ordersVM = orders.Select(o => o.ToVM()).ToList();
+            return View(ordersVM);
+        }
     }
 }

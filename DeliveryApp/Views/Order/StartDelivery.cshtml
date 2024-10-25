@@ -1,0 +1,30 @@
+﻿@model List<OrderViewModel>
+<div class="row">
+    <h5> результат фильтрации
+    заказов для доставки в конкретный район города в ближайшие полчаса после времени
+    первого заказа.    </h5>
+     <table class="table table-success table-striped-columns table-bordered border-dark" border="1">
+        <tr>
+             <th>ID заказа</th>
+             <th>Вес</th>
+             <th>Район</th>
+             <th>Дата и время доставки</th>
+             <th>Дата и время создания заказа</th>
+         </tr>
+         @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.Weight</td>
+                <td>@order.CityDistrict</td>
+                <td>@order.OrderDeliveryDate</td>
+                <td>@order.OrderCreationDate</td>
+            </tr>
+        }
+        <tr>
+            <td colspan="5" align="center">
+               <a class="btn btn-success" asp-controller="Order" asp-action="SaveDevivery">Сохранить заказы в базу данных</a>
+            </td>
+        </tr>
+    </table>
+</div>
